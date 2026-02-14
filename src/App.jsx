@@ -470,7 +470,7 @@ const GreekLearningApp = () => {
         { greek: "ἀληθῆ", english: "the truth" },
         { greek: "ἀλλά", english: "but" },
         { greek: "ἆρα", english: "question" },
-        { greek: "αύθις", english: "again" },
+        { greek: "αὖθις", english: "again" },
         { greek: "βλέπε", english: "look!" },
         { greek: "γὰρ", english: "for" },
         { greek: "δεῦρο", english: "here, over here" },
@@ -481,7 +481,7 @@ const GreekLearningApp = () => {
         { greek: "ἡ ἀκρόπολις", english: "the acropolis" },
         { greek: "ἡμεῖς", english: "we" },
         { greek: "ἰδού", english: "here! hey! look!" },
-        { greek: "καὶ", english: "also" },
+        { greek: "καὶ", english: "and, also" },
         { greek: "καλός", english: "beautiful" },
         { greek: "καλὴ", english: "beautiful" },
         { greek: "καλόν", english: "beautiful" },
@@ -489,7 +489,7 @@ const GreekLearningApp = () => {
         { greek: "κυβερνήτης", english: "captain" },
         { greek: "λέγεις", english: "you are speaking" },
         { greek: "μὰ Δία", english: "by zeus" },
-        { greek: "μὴ", english: "don't" },
+        { greek: "μὴ", english: "do not" },
         { greek: "ναί", english: "yes" },
         { greek: "νῦν", english: "now" },
         { greek: "ὁ Παρθενών", english: "the parthenon" },
@@ -505,7 +505,7 @@ const GreekLearningApp = () => {
         { greek: "σαφῶς", english: "clearly" },
         { greek: "σὺ", english: "you" },
         { greek: "τὴν ἀκρόπολιν", english: "the acropolis" },
-        { greek: "τίς;", english: "what?" },
+        { greek: "τίς;", english: "what? who?" },
         { greek: "τὸ νεῶριον", english: "the naval dockyard" },
         { greek: "τὸν Παρθενῶνα", english: "the parthenon" },
         { greek: "τὸν Πειραιᾶ", english: "the peiraieus" },
@@ -725,8 +725,8 @@ const GreekLearningApp = () => {
     if (userInput === "") {
       setFeedback({
         type: "incorrect",
-        message: "Skriv in ett svar först!",
-        hint: "Använd tangentbordet eller klicka på de grekiska tecknen",
+        message: "Enter an answer!",
+        hint: "Use the keyboard or click on the Greek letters",
       });
       setTimeout(() => setFeedback(null), 2000);
       return;
