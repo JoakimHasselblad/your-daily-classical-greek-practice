@@ -413,36 +413,36 @@ const GreekLearningApp = () => {
       id: 1,
       title: "Section 1A: Complete Vocabulary",
       words: [
-        { greek: "ἀκούουσιν", english: "(they) hear" },
-        { greek: "βαίνει", english: "(he) goes" },
-        { greek: "βλέπει", english: "(he) looks" },
-        { greek: "βλέπουσιν", english: "(they) look" },
+        { greek: "ἀκούουσιν", english: "they hear" },
+        { greek: "βαίνει", english: "he goes" },
+        { greek: "βλέπει", english: "he looks" },
+        { greek: "βλέπουσιν", english: "they look" },
         { greek: "δὲ", english: "and, but" },
         { greek: "εἰς", english: "to, into" },
         { greek: "εἰς Εὔβοιαν", english: "to euboia" },
         { greek: "εἰς τὸ πλοῖον", english: "onto the ship" },
         { greek: "εἰς Χίον", english: "to chios" },
-        { greek: "εἰσβαίνει", english: "(he) embarks" },
-        { greek: "εἰσβαίνουσιν", english: "(they) embark" },
+        { greek: "εἰσβαίνει", english: "he embarks" },
+        { greek: "εἰσβαίνουσιν", english: "they embark" },
         { greek: "ἐν", english: "in, on" },
         { greek: "ἐν Βυζαντίῳ", english: "in byzantium" },
         { greek: "ἐν Εὐβοίᾳ", english: "in euboia" },
         { greek: "ἐν Χίῳ", english: "in chios" },
         { greek: "ἐξαίφνης", english: "suddenly" },
         { greek: "ἔπειτα", english: "then, next" },
-        { greek: "ἐστιν", english: "(it, there) is" },
+        { greek: "ἐστιν", english: "it, there is" },
         { greek: "καὶ", english: "and" },
         { greek: "καὶ … καὶ", english: "both … and" },
         { greek: "μὲν … δὲ", english: "on the one hand … on the other" },
-        { greek: "ὁ", english: "the (sg)" },
+        { greek: "ὁ", english: "the" },
         { greek: "ὁ κυβερνήτης", english: "the captain, helmsman" },
         { greek: "ὁ ραψωδός", english: "the rhapsode" },
-        { greek: "oἱ", english: "the (pl)" },
+        { greek: "oἱ", english: "the" },
         { greek: "oἱ ναῦται", english: "the sailors, crew" },
-        { greek: "ὁρᾷ", english: "(he) sees" },
-        { greek: "ὁρῶσιν", english: "(they) see" },
+        { greek: "ὁρᾷ", english: "he sees" },
+        { greek: "ὁρῶσιν", english: "they see" },
         { greek: "οὖν", english: "so, really, therefore" },
-        { greek: "πλεῖ", english: "(it) sails" },
+        { greek: "πλεῖ", english: "it sails" },
         { greek: "πρὸς", english: "towards" },
         { greek: "πρὸς τὰς Ἀθήνας", english: "towards athens" },
         { greek: "πρὸς τὴν γήν", english: "towards land" },
@@ -948,7 +948,8 @@ const GreekLearningApp = () => {
             </h3>
             <ul className="text-gray-700 space-y-2 text-sm">
               <li>
-                • <strong>NEW: Section 1A uses iterative learning!</strong>{" "}
+                •{" "}
+                <strong>NEW: Section 1A and 1B uses iterative learning!</strong>{" "}
                 Master all 44 words through repeated practice.
               </li>
               <li>
