@@ -26,6 +26,7 @@ const GreekLearningApp = () => {
   const [round, setRound] = useState(1);
   const [totalWords, setTotalWords] = useState(0);
   const [currentRoundWords, setCurrentRoundWords] = useState([]);
+  const [answeredQuestions, setAnsweredQuestions] = useState([]);
 
   // Greek keyboard layout
   const greekKeyboard = {
@@ -518,23 +519,43 @@ const GreekLearningApp = () => {
     },
     {
       id: 3,
-      title: "Section 1C-D: People & Actions",
+      title: "Section 1C: Complete Vocabulary",
       words: [
-        { greek: "ὁ ἀνήρ", english: "the man", hint: "Andros = man" },
-        { greek: "ἡ γυνή", english: "the woman", hint: "Gynecology" },
-        { greek: "καί", english: "and", hint: "Most common!" },
-        { greek: "οὐ", english: "not", hint: "Negative" },
-        { greek: "τίς", english: "who", hint: "Question" },
-        { greek: "πρός", english: "to", hint: "Pros and cons" },
-        { greek: "βαίνω", english: "i go", hint: "Think: base" },
-        { greek: "φεύγω", english: "i flee", hint: "Fugitive" },
-        { greek: "διώκω", english: "i pursue", hint: "Chase!" },
-        { greek: "ὁ κύριος", english: "master", hint: "Kyrie eleison" },
+        { greek: "αἱ", english: "the" },
+        { greek: "αἱ ὁλκάδες", english: "the merchant ships" },
+        { greek: "βαίνετε", english: "you are going" },
+        { greek: "βλέπετε", english: "look!" },
+        { greek: "διὰ τί;", english: "why?" },
+        { greek: "Δικαιόπολι", english: "dikaiopolis" },
+        { greek: "εἰσιν", english: "they are" },
+        { greek: "ἔλθετε", english: "come!" },
+        { greek: "ἐστι(ν)", english: "they are" },
+        { greek: "Ζηνόθεμι", english: "zenothemis" },
+        { greek: "καλ-αί", english: "beautiful, fine" },
+        { greek: "καλ-ά", english: "beautiful, fine" },
+        { greek: "καταβαίνομεν", english: "we go down" },
+        { greek: "κάτωθεν", english: "from below" },
+        { greek: "λέγε", english: "say!" },
+        { greek: "μένετε", english: "you stay" },
+        { greek: "ὁρῶμεν", english: "we see" },
+        { greek: "ὁρᾶτε", english: "you see" },
+        { greek: "οὐκ", english: "not" },
+        { greek: "πόθεν;", english: "from where?" },
+        { greek: "ποῖ;", english: "where to?" },
+        { greek: "Πόσειδον", english: "poseidon (god of the sea)" },
+        { greek: "τὰ", english: "the" },
+        { greek: "τὰ ἐμπόρια", english: "the markets" },
+        { greek: "τὰς", english: "the" },
+        { greek: "τὰς ὁλκάδας", english: "the merchant ships" },
+        { greek: "τί μήν;", english: "so what?; of course" },
+        { greek: "ὑμεῖς", english: "you" },
+        { greek: "φίλοι", english: "friends" },
+        { greek: "φροντίζετε", english: "worry!" },
       ],
     },
     {
       id: 4,
-      title: "Section 1E-F: More Verbs",
+      title: "Section 1D-E: Placeholder",
       words: [
         { greek: "φέρω", english: "i carry", hint: "Transfer" },
         { greek: "ἄγω", english: "i lead", hint: "Pedagogue" },
@@ -756,6 +777,12 @@ const GreekLearningApp = () => {
       setScore(score + 10);
       setStreak(streak + 1);
       setFeedback({ type: "correct", message: "✨ Ἄριστα! (Excellent!)" });
+      // Track correct answer
+      setAnsweredQuestions((prev) => {
+        const newAnswers = [...prev];
+        newAnswers[currentQuestion] = true;
+        return newAnswers;
+      });
     } else {
       setStreak(0);
       // For vocabulary with iterative learning, track wrong words
@@ -769,6 +796,12 @@ const GreekLearningApp = () => {
         type: "incorrect",
         message: `Not quite! The answer is: ${quiz[currentQuestion].answer}`,
         hint: quiz[currentQuestion].hint,
+      });
+      // Track incorrect answer
+      setAnsweredQuestions((prev) => {
+        const newAnswers = [...prev];
+        newAnswers[currentQuestion] = false;
+        return newAnswers;
       });
     }
 
@@ -797,6 +830,7 @@ const GreekLearningApp = () => {
     setWrongWords([]);
     setRound(1);
     setCurrentRoundWords([]);
+    setAnsweredQuestions([]);
   };
 
   const startLesson = (type, lessonId) => {
@@ -828,6 +862,7 @@ const GreekLearningApp = () => {
     setCurrentQuestion(0);
     setUserAnswer("");
     setFeedback(null);
+    setAnsweredQuestions([]);
 
     const newQuiz = generateVocabQuiz(wrongWords);
     setCurrentRoundWords(wrongWords);
@@ -947,11 +982,7 @@ const GreekLearningApp = () => {
               📚 Study Tips
             </h3>
             <ul className="text-gray-700 space-y-2 text-sm">
-              <li>
-                •{" "}
-                <strong>NEW: Section 1A and 1B uses iterative learning!</strong>{" "}
-                Master all 44 words through repeated practice.
-              </li>
+              <li>• The complete vocabularies use iterative learning.</li>
               <li>
                 • Virtual keyboard includes Greek punctuation: ano teleia (·)
                 and question mark (;)
@@ -1069,18 +1100,25 @@ const GreekLearningApp = () => {
                     ` (${currentRoundWords.length} words this round)`}
                 </span>
                 <div className="flex gap-1">
-                  {quiz.map((_, idx) => (
-                    <div
-                      key={idx}
-                      className={`w-3 h-3 rounded-full ${
-                        idx < currentQuestion
-                          ? "bg-green-400"
-                          : idx === currentQuestion
-                          ? "bg-indigo-500"
-                          : "bg-gray-200"
-                      }`}
-                    />
-                  ))}
+                  {quiz.map((_, idx) => {
+                    const wasAnswered = answeredQuestions[idx] !== undefined;
+                    const wasCorrect = answeredQuestions[idx] === true;
+                    const isCurrent = idx === currentQuestion;
+
+                    let colorClass = "bg-gray-200"; // Not answered yet
+                    if (isCurrent) {
+                      colorClass = "bg-indigo-500"; // Current question
+                    } else if (wasAnswered) {
+                      colorClass = wasCorrect ? "bg-green-400" : "bg-red-400"; // Green if correct, red if wrong
+                    }
+
+                    return (
+                      <div
+                        key={idx}
+                        className={`w-3 h-3 rounded-full ${colorClass}`}
+                      />
+                    );
+                  })}
                 </div>
               </div>
               <h2 className="text-2xl font-bold text-gray-800 mb-2">
