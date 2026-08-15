@@ -9,6 +9,9 @@
       "onAutoForward": "openPreview"
     }
   },
+    "features": {
+    "ghcr.io/devcontainers/features/git-lfs:1": {}
+  },
   "customizations": {
     "vscode": {
       "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
